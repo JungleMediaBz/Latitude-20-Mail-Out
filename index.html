@@ -42,11 +42,23 @@
 
         .initial-logo {
             position: fixed;
-            top: 50%;
+            top: 10%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 300px;
             filter: brightness(0) invert(1) blur(0.5px);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        .second-logo {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            filter: brightness(0) invert(1) blur(0.5px);
+            opacity: 0;
             animation: logoGlow 2s ease-in-out infinite alternate;
             z-index: 2;
         }
@@ -185,7 +197,7 @@
         .tree-design {
             position: fixed;
             left: 50%;
-            top: 45%;
+            top: 50%;
             transform: translate(-50%, -50%);
             width: 408px;
             height: auto;
@@ -198,7 +210,7 @@
         .christmas-text {
             position: fixed;
             left: 50%;
-            bottom: 10%;
+            bottom: 15%;
             transform: translateX(-50%);
             white-space: nowrap;
             text-align: center;
@@ -352,7 +364,7 @@
         @media screen and (max-width: 768px) {
             .tree-design {
                 width: 300px;
-                top: 40%;
+                top: 45%;
             }
 
             .holiday-text {
@@ -368,8 +380,12 @@
                 padding: 20px;
             }
 
-            .initial-logo {
+            .initial-logo, .second-logo {
                 width: 200px;
+            }
+
+            .second-logo {
+                top: 10%;
             }
 
             .reveal-button {
@@ -381,7 +397,12 @@
         @media screen and (max-width: 480px) {
             .tree-design {
                 width: 240px;
-                top: 35%;
+                top: 65%;
+            }
+
+            .initial-logo, .second-logo {
+                width: 180px;
+                top: 25%;
             }
 
             .christmas-text {
@@ -409,11 +430,23 @@
             .reveal-button {
                 bottom: 25%;
             }
+
+            .initial-logo, .second-logo {
+                width: 180px;
+            }
+
+            .initial-logo {
+                top: 25%;
+            }
+
+            .second-logo {
+                top: 10%;
+            }
         }
 
         @media screen and (max-height: 600px) {
             .tree-design {
-                top: 50%;
+                top: 65%;
             }
 
             .christmas-text {
@@ -431,6 +464,14 @@
             .year-text {
                 font-size: 24px;
             }
+
+            .initial-logo {
+                top: 20%;
+            }
+
+            .second-logo {
+                top: 40%;
+            }
         }
 
         /* Additional small screen adjustments */
@@ -447,7 +488,7 @@
                 font-size: 22px;
             }
 
-            .initial-logo {
+            .initial-logo, .second-logo {
                 width: 160px;
             }
 
@@ -558,6 +599,152 @@
         .message-content h2 {
             content: "Season's Greetings from Latitude 20!";
         }
+
+        @media screen and (max-width: 480px) {
+            .tree-design {
+                width: 240px;
+                top: 35%;
+            }
+
+            .christmas-text {
+                bottom: 20%;
+            }
+
+            .holiday-text {
+                font-size: 59px;  /* Adjusted for better vertical fit */
+            }
+
+            .year-text {
+                font-size: 20px;
+                margin-top: 5px;
+            }
+
+            .message-content {
+                max-height: 80vh;  /* Limit height */
+                overflow-y: auto;  /* Allow scrolling if needed */
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .message-content h2 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .message-content p {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .close-button {
+                margin-top: 15px;
+                padding: 10px 20px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+                padding: 15px 20px;
+                font-size: 11px;
+                background: rgb(0, 128, 6);
+            }
+
+            .reveal-button {
+                bottom: 25%;
+                font-size: 18px;
+                padding: 10px 25px;
+            }
+
+            .initial-logo, .second-logo {
+                width: 180px;
+            }
+
+            .initial-logo {
+                top: 50%;
+            }
+
+            .second-logo {
+                top: 10%;
+            }
+        }
+
+        /* Additional height-based adjustments */
+        @media screen and (max-height: 700px) and (max-width: 480px) {
+            .tree-design {
+                width: 200px;
+                top: 45%;
+            }
+
+            .christmas-text {
+                bottom: 15%;
+            }
+
+            .holiday-text {
+                font-size: 52px;
+            }
+
+            .year-text {
+                font-size: 18px;
+            }
+
+            .reveal-button {
+                bottom: 20%;
+                padding: 8px 20px;
+            }
+
+            .message-content {
+                max-height: 70vh;
+            }
+        }
+
+        /* Very small height adjustments */
+        @media screen and (max-height: 600px) and (max-width: 480px) {
+            .tree-design {
+                width: 180px;
+                top: 28%;
+            }
+
+            .christmas-text {
+                bottom: 12%;
+            }
+
+            .holiday-text {
+                font-size: 46px;
+            }
+
+            .reveal-button {
+                bottom: 17%;
+                font-size: 16px;
+            }
+
+            .message-content {
+                max-height: 65vh;
+            }
+        }
+
+        /* Add animation for second logo */
+        .content-container.show .second-logo {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        /* Adjust aspect ratio for desktop */
+        @media screen and (min-aspect-ratio: 16/9) {
+            .tree-design {
+                width: 350px;  /* Slightly smaller for widescreen */
+                top: 50%;
+            }
+
+            .initial-logo, .second-logo {
+                width: 250px;
+                top: 10%;
+            }
+
+            .christmas-text {
+                bottom: 15%;
+            }
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -566,6 +753,7 @@
 <body>
     <!-- Initial state with logo -->
     <img src="images/logo.png" class="initial-logo" alt="Latitude 20 Logo">
+    <img src="images/logo.png" class="second-logo" alt="Latitude 20 Logo">
     <button class="reveal-button">READ MESSAGE</button>
 
     <!-- Content revealed after button press -->
@@ -616,8 +804,9 @@
             document.querySelector('.initial-logo').style.opacity = '0';
             this.classList.add('hidden');
             
-            // Show Christmas content
+            // Show Christmas content and second logo
             document.querySelector('.content-container').classList.add('show');
+            document.querySelector('.second-logo').style.opacity = '1';
             
             // Create and animate envelope
             setTimeout(() => {
